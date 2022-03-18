@@ -1,0 +1,87 @@
+import java.io.*;
+import java.math.BigInteger;
+import java.util.*;
+
+public class Main {
+    static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+    static StreamTokenizer cin = new StreamTokenizer(in);
+    static BufferedWriter out = new BufferedWriter(new OutputStreamWriter(System.out));
+    static xy ff(xy xyxy,int fa,int c)
+    {
+    	//System.out.println(fa);
+    	if(fa==90)
+    	{
+    		xyxy.y+=c;
+    	}
+    	else if(fa==180)
+    	{
+    		xyxy.x-=c;
+    	}
+    	else if(fa==270)
+    	{
+    		xyxy.y-=c;
+    	}
+    	else 
+    	{
+    		xyxy.x+=c;
+    	}
+    	return xyxy;
+    }
+    public static void main(String[] args) throws IOException{
+    	//in.readLine();
+    	cin.nextToken();int t=(int)cin.nval;
+    	//in.readLine();
+    	xy a=new xy();
+    	xy b=new xy();
+    	while(t--!=0)
+    	{
+    		String f=in.readLine();
+    		int fa=0;
+    		char ch[]=new char [257];
+    		String s;
+    		int x=0;
+    		for(int i=0;i<f.length();i++)
+    		{
+    			x=0;
+    			s="";
+    			if(f.charAt(i)=='R')
+    			{
+    				fa+=90;
+    				fa=(fa+360)%360;
+    			}
+    			else if(f.charAt(i)=='L')
+    			{
+    				fa-=90;
+    				fa=(fa+360)%360;
+    			}
+    			int xxx=0;
+    			while(i<f.length()&&f.charAt(i)!='R'&&f.charAt(i)!='L')
+				{
+    				xxx=1;
+					ch[x++]=f.charAt(i);
+					i++;
+				}
+    			if(xxx==1)
+    				i--;
+				s=new String(ch,0,x);
+				if(!s.isEmpty())
+				{
+					//System.out.println(s);
+					a=ff(a,fa,Integer.parseInt(s));
+				}
+					
+    		}
+    		//System.out.println(a.x+" "+a.y);
+    		double aa=(a.x-b.x)*(a.x-b.x);
+    		double bb=(a.y-b.y)*(a.y-b.y);
+    		double xx=Math.sqrt(aa+bb);
+			out.write(String.format("%.2f\n", xx));
+			b.x=a.x;
+			b.y=a.y;
+    	}
+    	out.flush();
+    }
+}
+class xy{
+	int x, y;
+}
