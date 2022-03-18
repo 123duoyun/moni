@@ -1,4 +1,5 @@
 //https://www.lanqiao.cn/problems/283/learning/
+//注意看题目是每条命令的前后位置差
 import java.io.*;
 import java.math.BigInteger;
 import java.util.*;
