@@ -1,0 +1,32 @@
+//https://www.lanqiao.cn/problems/1181/learning/
+import java.io.*;
+import java.math.BigInteger;
+import java.util.*;
+
+public class Main {
+    static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+    static StreamTokenizer cin = new StreamTokenizer(in);
+    static BufferedWriter out = new BufferedWriter(new OutputStreamWriter(System.out));
+   
+    public static void main(String[] args) throws IOException{
+    	cin.nextToken();int t=(int)cin.nval;
+    	int n,m,p;
+    	while(t--!=0)
+    	{
+    		cin.nextToken();n=(int)cin.nval;
+    		cin.nextToken();m=(int)cin.nval;
+    		cin.nextToken();p=(int)cin.nval;
+    		long x=1;
+    		while(m>0)
+    		{
+    			if((m&1)==1)
+    				x=x*n%p;
+    			m>>=1;
+    			n=n*n%p;
+    		}
+    		out.write(x+"\n");
+    	}
+    	out.flush();
+    }
+}
+
