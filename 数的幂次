@@ -10,12 +10,12 @@ public class Main {
    
     public static void main(String[] args) throws IOException{
     	cin.nextToken();int t=(int)cin.nval;
-    	int n,m,p;
+    	long n,m,p;//用int超时！
     	while(t--!=0)
     	{
-    		cin.nextToken();n=(int)cin.nval;
-    		cin.nextToken();m=(int)cin.nval;
-    		cin.nextToken();p=(int)cin.nval;
+    		cin.nextToken();n=(long)cin.nval;
+    		cin.nextToken();m=(long)cin.nval;
+    		cin.nextToken();p=(long)cin.nval;
     		long x=1;
     		while(m>0)
     		{
