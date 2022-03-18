@@ -1,0 +1,20 @@
+//https://www.lanqiao.cn/problems/1029/learning/
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+    static StreamTokenizer cin = new StreamTokenizer(in);
+    static BufferedWriter out = new BufferedWriter(new OutputStreamWriter(System.out));
+   
+    public static void main(String[] args) throws IOException{
+    	String ff[]= {"zi","chou","yin","mao","chen","si","wu","wei","shen","you","xu","hai"};
+    	String f[]= {"jia","yi","bing","ding","wu","ji","geng","xin","ren","gui"};
+    	cin.nextToken();int n=(int)cin.nval;
+    	int x=n-2020;
+    	int a=(x+120000)%12;
+    	int b=(x+6+120000)%10;
+    	System.out.print(f[b]+ff[a]);
+    }
+}
+
