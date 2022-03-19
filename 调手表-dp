@@ -1,0 +1,25 @@
+//https://www.lanqiao.cn/problems/230/learning/
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+    static StreamTokenizer cin = new StreamTokenizer(in);
+    static BufferedWriter out = new BufferedWriter(new OutputStreamWriter(System.out));
+    
+    public static void main(String[] args) throws IOException{
+    	cin.nextToken();int n=(int)cin.nval;
+    	cin.nextToken();int k=(int)cin.nval;
+    	int dp[]=new int [10000005];
+    	for(int i=0;i<1000000;i++)
+    		dp[i]=10000;
+    	dp[0]=0;
+    	for(int i=0;i<1000;i++)
+    		for(int j=0;j<1000;j++)
+    			dp[(i*k+j)%n]=Math.min(dp[(i*k+j)%n], i+j);
+    	int ma=0;
+    	for(int i=1;i<n;i++)
+    		ma=Math.max(ma, dp[i]);
+    	System.out.println(ma);
+    }
+}
