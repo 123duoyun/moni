@@ -15,25 +15,11 @@ public class Main {
     	{
     		return f[i][j];
     	}
-    	int n=0;
-    	if(j-1>=0)
-    	{
-    		if(f[i-1][j]<f[i-1][j-1])
-    			n=1;
-    	}
-
-    	if(n==0)
-    	{
-    		//System.out.println(n);
-    		mx+=bfs(i-1,j);
-    		
+    	if(j-1>=0&&f[i-1][j]<f[i-1][j-1]){
+    		mx+=bfs(i-1,j-1);
     	}
     	else
-    	{
-    		//System.out.println(n);
-    		mx+=bfs(i-1,j-1);
-    		
-    	}
+    		mx+=bfs(i-1,j);
     	return mx;
     }
     public static void main(String[] args) throws IOException{
@@ -50,4 +36,3 @@ public class Main {
     	System.out.println(max);
     }
 }
-
