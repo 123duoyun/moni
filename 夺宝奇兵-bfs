@@ -1,0 +1,53 @@
+//https://www.dotcpp.com/oj/problem1514.html
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+    static StreamTokenizer cin = new StreamTokenizer(in);
+    static BufferedWriter out = new BufferedWriter(new OutputStreamWriter(System.out));
+    static int f[][]=new int [105][105];
+    static int n;
+    static int bfs(int i,int j)
+    {
+    	int mx=f[i][j];
+    	if(i==0)
+    	{
+    		return f[i][j];
+    	}
+    	int n=0;
+    	if(j-1>=0)
+    	{
+    		if(f[i-1][j]<f[i-1][j-1])
+    			n=1;
+    	}
+
+    	if(n==0)
+    	{
+    		//System.out.println(n);
+    		mx+=bfs(i-1,j);
+    		
+    	}
+    	else
+    	{
+    		//System.out.println(n);
+    		mx+=bfs(i-1,j-1);
+    		
+    	}
+    	return mx;
+    }
+    public static void main(String[] args) throws IOException{
+    	cin.nextToken();n=(int)cin.nval;
+    	for(int i=0;i<n;i++)
+    		for(int j=0;j<=i;j++)
+    		{
+    			cin.nextToken();
+    			f[i][j]=(int)cin.nval;
+    		}
+    	int max=0;
+    	for(int i=0;i<n;i++)
+    		max=Math.max(bfs(n-1,i), max);
+    	System.out.println(max);
+    }
+}
+
