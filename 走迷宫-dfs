@@ -1,0 +1,64 @@
+//https://www.lanqiao.cn/problems/1216/learning/
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+    static StreamTokenizer cin = new StreamTokenizer(in);
+    static BufferedWriter out = new BufferedWriter(new OutputStreamWriter(System.out));
+    static int f[][]=new int [105][105];
+    static int fb[][]=new int [105][105];
+    static int n,m,rx,ry,cx,cy;
+    static int v=Integer.MAX_VALUE;
+    static int lu[][]= {{0,1},{0,-1},{-1,0},{1,0}};
+    static void dfs()
+    {
+    	Queue<zp>q=new LinkedList<zp>();
+    	zp x=new zp();
+    	x.x=rx;
+    	x.y=ry;
+    	x.step=0;
+    	q.add(x);
+    	while(!q.isEmpty())
+    	{
+    		zp y=q.poll();
+    		if(y.x==cx&&y.y==cy)
+    		{
+    			System.out.println(y.step);
+    			return ;
+    		}
+    		for(int i=0;i<4;i++)
+    		{
+    			zp z=new zp();
+    			z.x=y.x+lu[i][0];
+    			z.y=y.y+lu[i][1];
+    			z.step=y.step+1;
+    			if(z.x>0&&z.x<=n&&z.y>0&&z.y<=m&&f[z.x][z.y]==1&&fb[z.x][z.y]==0)
+    			{
+    				q.add(z);
+    				fb[z.x][z.y]=1;
+    			}
+    		}
+    	}
+    	System.out.println(-1);
+    	return ;
+    }
+    public static void main(String[] args) throws IOException{
+    	cin.nextToken();n=(int)cin.nval;
+    	cin.nextToken();m=(int)cin.nval;
+    	for(int i=1;i<=n;i++)
+    		for(int j=1;j<=m;j++)
+    		{
+    			cin.nextToken();
+    			f[i][j]=(int)cin.nval;
+    		}
+    	cin.nextToken();rx=(int)cin.nval;
+    	cin.nextToken();ry=(int)cin.nval;
+    	cin.nextToken();cx=(int)cin.nval;
+    	cin.nextToken();cy=(int)cin.nval;
+    	dfs();
+    }
+}
+class zp{
+	int x,y,step;
+}
