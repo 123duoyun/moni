@@ -1,0 +1,12 @@
+static long mi(long x,int y)
+    {
+    	long t=1;
+    	while(y!=0)
+    	{
+    		if(y%2==1)
+    			t=t*x;
+    		y=y/2;
+    		x=x*x;
+    	}
+    	return t;
+    }
