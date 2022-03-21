@@ -1,0 +1,28 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+    static StreamTokenizer cin = new StreamTokenizer(in);
+    static BufferedWriter out = new BufferedWriter(new OutputStreamWriter(System.out));
+    static long cc(int m,int n)
+    {
+    	long fi=1;
+    	int fm=m-1;
+    	int count=m-1;
+    	int t=m+n-2;
+    	while(count--!=0)
+    	{
+    		fi*=t--;
+    		while(fm!=0&&fi%fm==0)
+    		{
+    			fi/=fm;
+    			fm--;
+    		}
+    	}
+    	return fi;
+    }
+    public static void main(String[] args) throws IOException{
+    	System.out.println(cc(34,100));
+    }
+}
