@@ -1,0 +1,73 @@
+//http://lx.lanqiao.cn/problem.page?gpid=T2818
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+    static StreamTokenizer cin = new StreamTokenizer(in);
+    static BufferedWriter out = new BufferedWriter(new OutputStreamWriter(System.out));
+    static int n,ax,ay,bx,by,ant;
+    static int lu[][]= {{1,0},{-1,0},{0,1},{0,-1}};
+    static String f[]=new String [105];
+    static int ff[][]=new int [105][105];
+    static void dfs()
+    {
+    	zb a=new zb();
+    	a.x=ax;
+    	a.y=ay;
+    	a.step=0;
+    	ff[a.x][a.y]=1;
+    	Queue< zb>q=new LinkedList<zb>();
+    	q.add(a);
+    	while(!q.isEmpty())
+    	{
+    		zb b=q.poll();
+    		if(b.x==bx&&b.y==by)
+    		{
+    			System.out.println(b.step);
+    			System.exit(0);
+    		}
+    		for(int i=0;i<4;i++)
+    		{
+    			zb c=new zb();
+    			c.x=b.x+lu[i][0];
+    			c.y=b.y+lu[i][1];
+    			c.step=b.step+1;
+    			if(c.x>=0&&c.x<n&&c.y>=0&&c.y<n&&f[c.x].charAt(c.y)!=f[b.x].charAt(b.y)&&ff[c.x][c.y]==0)
+    			{
+    				ff[c.x][c.y]=1;
+    				q.add(c);
+    			}
+    		}
+    	}
+    }
+    public static void main(String[] args) throws IOException{
+    	n=Integer.parseInt(in.readLine().trim());
+    	for(int i=0;i<n;i++)
+    	{
+    		f[i]=in.readLine().replace(" ", "");
+    	}
+    	
+    	
+    	for(int i=0;i<n;i++)
+    		for(int j=0;j<n;j++)
+    		{
+    			if(f[i].charAt(j)=='A')
+    			{
+    				ax=i;
+    				ay=j;
+    			}
+    			if(f[i].charAt(j)=='B')
+    			{
+    				bx=i;
+    				by=j;
+    			}
+    		}
+    	
+    	dfs();
+    }
+}
+class zb
+{
+	int x,y,step;
+}
