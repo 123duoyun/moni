@@ -1,0 +1,26 @@
+//https://www.lanqiao.cn/problems/122/learning/
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+    static StreamTokenizer cin = new StreamTokenizer(in);
+    static BufferedWriter out = new BufferedWriter(new OutputStreamWriter(System.out));
+    static int n;
+    
+    public static void main(String[] args) throws IOException{
+    	cin.nextToken();n=(int)cin.nval;
+    	int sqrt=(int)Math.sqrt(n)+1;
+    	for(int i=0;i<=sqrt;i++)
+    		for(int j=i;j<=sqrt;j++)
+    			for(int a=j;a<=sqrt;a++)
+    				for(int b=a;b<=sqrt;b++)
+    					if(i*i+j*j+a*a+b*b==n)
+    					{
+    						out.write(i+" "+j+" "+a+" "+b);
+    						out.flush();
+    						System.exit(0);
+              }
+    }
+}
+
