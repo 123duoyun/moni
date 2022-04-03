@@ -1,0 +1,61 @@
+//https://www.lanqiao.cn/problems/109/learning/
+#include<stdio.h>
+#include<iostream>
+#include<vector>
+#include<string.h>
+using namespace std;
+const int maxn = 100 + 5;
+int room[maxn][maxn];//保存教室i中第j个学生的id
+int gra[maxn][maxn];//存图
+int m,n;
+int res = maxn + 500;//保存答案
+void solve(int id,int num)
+{
+    //printf("%d %d\n",id,num);
+    if(num >= res){//剪枝
+        return ;
+    }
+    if(id > n){//学生的编号从1开始防止room[][] = 0不是没学生的标志
+        res = min(res,num);
+        return ;
+    }
+    for(int i = 1;i <= num;i++){//找到id是否有符合的教室
+        int k = 0,flag = 1;
+        while(room[i][k]){//查找学生教室中是否有认识的人
+           // printf("%d %d %d\n",id,room[i][k],gra[id][room[i][k]]);
+            if(gra[id][room[i][k]]){//教室里面有认识的人
+                //printf("冲突\n");
+                flag = 0;
+                break;
+            }
+            k++;//不要写在数组里面防止执行顺序的不对而出错
+        }
+        if(flag){				//回溯一定对应着判断
+            room[i][k] = id;
+            solve(id+1,num);
+            room[i][k] = 0;		//第一层回溯
+        }
+    }
+//重新开启一个教室
+    room[num+1][0] = id;
+    solve(id+1,num+1);
+    room[num+1][0] = 0;//第二层回溯
+}
+void init()
+{
+    memset(room,0,sizeof(room));
+}
+int main()
+{
+    init();
+    scanf("%d%d",&n,&m);
+    for(int i = 0;i < m;i++){
+        int a,b;
+        scanf("%d%d",&a,&b);
+        gra[a][b] = gra[b][a] = 1;
+    }
+    solve(1,0);
+    printf("%d\n",res);
+    return 0;
+}
+
