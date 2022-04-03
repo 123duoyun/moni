@@ -10,7 +10,7 @@ public class Main {
     
     public static void main(String[] args) throws IOException{
     	cin.nextToken();n=(int)cin.nval;
-    	int sqrt=(int)Math.sqrt(n)+1;
+    	int sqrt=(int)Math.sqrt(n)+1;//int 比较double 省时
     	for(int i=0;i<=sqrt;i++)
     		for(int j=i;j<=sqrt;j++)
     			for(int a=j;a<=sqrt;a++)
