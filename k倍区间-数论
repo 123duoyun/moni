@@ -1,0 +1,33 @@
+//https://www.lanqiao.cn/problems/97/learning/
+
+
+(f[r]-f[l])%k=0
+f[r]%k=f[l]%k
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+    static StreamTokenizer cin = new StreamTokenizer(in);
+    static BufferedWriter out = new BufferedWriter(new OutputStreamWriter(System.out));
+    static int n,k;
+    static int f[]=new int [100005];
+    static int ff[]=new int [100005];
+    public static void main(String[] args) throws IOException{
+    	cin.nextToken();n=(int)cin.nval;
+    	cin.nextToken();k=(int)cin.nval;
+    	long ant=0;
+    	ff[0]=1;
+    	for(int i=1,x;i<=n;i++)
+    	{
+    		cin.nextToken();
+    		x=(int)cin.nval;
+    		f[i]=x+f[i-1];
+    		ant+=ff[f[i]%k];
+    		ff[f[i]%k]++;
+    	}
+    	System.out.println(ant);
+    }
+}
+
