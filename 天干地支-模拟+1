@@ -1,4 +1,5 @@
 //https://www.lanqiao.cn/problems/1029/learning/
+
 import java.io.*;
 import java.util.*;
 
@@ -9,7 +10,7 @@ public class Main {
    
     public static void main(String[] args) throws IOException{
     	String ff[]= {"zi","chou","yin","mao","chen","si","wu","wei","shen","you","xu","hai"};
-    	String f[]= {"jia","yi","bing","ding","wu","ji","geng","xin","ren","gui"};
+    	String f[]= {"jia","yi","bing","ding","wu","ji","geng","xin","ren","gui"};//别输错了，细心
     	cin.nextToken();int n=(int)cin.nval;
     	int x=n-2020;
     	int a=(x+120000)%12;
